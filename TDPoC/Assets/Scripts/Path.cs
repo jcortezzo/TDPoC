@@ -11,7 +11,7 @@ public class Path : MonoBehaviour
 
     public Vector2 GetPosition(float t)
     {
-        Debug.Log(t);
+        //Debug.Log(t);
         t *= Size;
         var index = Mathf.FloorToInt(t);
         t -= index;
