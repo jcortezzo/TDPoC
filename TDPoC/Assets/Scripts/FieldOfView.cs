@@ -42,7 +42,7 @@ public class FieldOfView : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        ViewDistance = GetComponentInParent<DartMonkey>().ViewDistance;
+        ViewDistance = GetComponentInParent<ExampleTower>().ViewDistance;
         cc.radius = ViewDistance;
 
         possibleTargets = new HashSet<Bloon>();

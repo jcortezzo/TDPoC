@@ -1071,7 +1071,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9140411223947409754, guid: 19f41e7a1d382df4ab505c446e98b6f7, type: 3}
       propertyPath: m_Name
-      value: DartMonkey
+      value: ExampleTower
       objectReference: {fileID: 0}
     - target: {fileID: 9140411223947409757, guid: 19f41e7a1d382df4ab505c446e98b6f7, type: 3}
       propertyPath: m_RootOrder
@@ -1116,6 +1116,10 @@ PrefabInstance:
     - target: {fileID: 9140411223947409757, guid: 19f41e7a1d382df4ab505c446e98b6f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140411223947409758, guid: 19f41e7a1d382df4ab505c446e98b6f7, type: 3}
+      propertyPath: <ViewDistance>k__BackingField
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f41e7a1d382df4ab505c446e98b6f7, type: 3}
