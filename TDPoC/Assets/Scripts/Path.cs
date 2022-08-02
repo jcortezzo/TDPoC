@@ -19,6 +19,14 @@ public class Path : MonoBehaviour
         return t.BezierN(routes[index].ControlPointPositions);
     }
 
+    public Vector2 GetRotation(float t)
+    {
+        t *= Size;
+        var index = Mathf.FloorToInt(t);
+        t -= index;
+        return t.DerivativeBezierN(routes[index].ControlPointPositions);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

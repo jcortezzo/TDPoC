@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8507d5559f1390f47accbe18d2b346cb, type: 3}
-  m_Name: BurstRed
+  m_Script: {fileID: 11500000, guid: d5f4ead649a56a440a9f2915cc6f37dc, type: 3}
+  m_Name: Red
   m_EditorClassIdentifier: 
-  bloonPrefabSequence:
-  - {fileID: 6274605210356305294, guid: 3129dd647b6574942a893a2413aa0ccd, type: 3}
-  count: 03000000
-  spacing:
-  - 0.05
-  timeTilNextWave: 0
+  bloonName: 
+  health: 1
+  speed: 7
+  properties: 

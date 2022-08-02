@@ -28,6 +28,21 @@ public static class ExtensionMethods
         return result;
     }
 
+    public static Vector2 DerivativeBezierN(this float t, Vector2[] points)
+    {
+        int n = points.Length - 1;
+        Vector2 result = Vector2.zero;
+
+        for (int i = 0; i <= n; i++)
+        {
+            result += (float)Combination(n, i) *
+                      points[i] *
+                      ((i * Mathf.Pow(t, i - 1) * Mathf.Pow(1 - t, n - i)) -
+                       (Mathf.Pow(t, i) * (n - i) * Mathf.Pow(1 - t, n - i - 1)));
+        }
+        return result;
+    }
+
     private static System.Numerics.BigInteger Combination(int n, int r)
     {
         return Factorial(n) / ((Factorial(n - r)) * Factorial(r));

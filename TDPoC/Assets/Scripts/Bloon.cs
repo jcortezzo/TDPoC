@@ -48,6 +48,7 @@ public class Bloon : MonoBehaviour
         for (Distance = 0; Distance <= 1; Distance += Time.deltaTime * ticRate * speed * modifier)
         {
             transform.position = path.GetPosition(Distance);
+            transform.up = path.GetRotation(Distance);
 
             // normalize over points to get constant speed
             var nextPos = path.GetPosition(Mathf.Min(0.999f, Distance + ticRate));
