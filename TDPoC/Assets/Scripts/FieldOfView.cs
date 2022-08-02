@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-
-
     private float fov = 360f;
     public float ViewDistance { get; set; }
     private Vector3 origin = Vector3.zero;

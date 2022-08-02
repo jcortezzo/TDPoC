@@ -33,6 +33,11 @@ public class Bloon : MonoBehaviour
         }
     }
 
+    public void SetPath(Path p)
+    {
+        this.path = p;
+    }
+
     private IEnumerator FollowPath()
     {
         coroutineAllowed = false;
