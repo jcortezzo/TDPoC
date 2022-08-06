@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ExampleTower : Tower
 {
-    protected override IEnumerator Shoot()
+    protected override IEnumerator Shoot(Bloon target)
     {
-        cd = true;
         Debug.Log("Shoot!");
-        yield return new WaitForSeconds(2f);
-        cd = false;
+        target.Damage(1);
+        yield return null;
     }
 }

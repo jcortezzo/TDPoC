@@ -2,7 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/TDPoC/[Ll]ibrary/
+/TDPoC/[Ll]ibrary*/
 /TDPoC/[Tt]emp/
 /TDPoC/[Oo]bj/
 /TDPoC/[Bb]uild/

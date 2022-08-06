@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5f4ead649a56a440a9f2915cc6f37dc, type: 3}
-  m_Name: DDT
+  m_Name: Blue
   m_EditorClassIdentifier: 
-  bloonName: DDT
-  health: 0
-  speed: 0
-  properties: 000000000200000001000000
+  bloonName: Blue
+  health: 1
+  speed: 10
+  properties: 
+  toSpawn:
+  - {fileID: 11400000, guid: 4270974978474fb40b3712f08326d7b3, type: 2}

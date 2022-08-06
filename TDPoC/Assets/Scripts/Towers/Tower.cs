@@ -12,7 +12,16 @@ public abstract class Tower : MonoBehaviour
 
     public FieldOfView FieldOfView { get; protected set; }
 
-    protected bool cd;  // cooldown
+    [field: SerializeField]
+    public float CooldownDuration { get; protected set; }
+
+    [field: SerializeField]
+    public float DamageModifier { get; protected set; }
+
+    [field: SerializeField]
+    public float PierceModifier { get; protected set; }
+
+    private bool cd;  // cooldown
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -27,11 +36,19 @@ public abstract class Tower : MonoBehaviour
         Bloon target = FieldOfView?.GetTarget(Targeting);
         if (target != null && !cd)
         {
-            StartCoroutine(Shoot());
+            StartCoroutine(ShootDecorator(target));
         }
     }
 
-    protected abstract IEnumerator Shoot();
+    protected virtual IEnumerator ShootDecorator(Bloon target)
+    {
+        cd = true;
+        yield return StartCoroutine(Shoot(target));
+        yield return new WaitForSeconds(this.CooldownDuration);
+        cd = false;
+    }
+
+    protected abstract IEnumerator Shoot(Bloon target);
 
     protected void OnValidate()
     {

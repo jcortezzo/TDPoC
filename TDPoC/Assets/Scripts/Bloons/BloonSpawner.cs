@@ -37,28 +37,50 @@ public class BloonSpawner : MonoBehaviour
         }
         
         StartCoroutine(SendWave(wave));
-        
     }
+
 
     private IEnumerator SendWave(Burst[] wave)
     {
+        yield return StartCoroutine(SendWave(this, wave, this.path, 0.001f));
+    }
+
+    public static IEnumerator SendWave(MonoBehaviour mb, Burst[] wave, Path p, float distance)
+    {
+        if (wave == null)
+        {
+            yield break;
+        }
         for (int i = 0; i < wave.Length; i++)
         {
             Burst burst = wave[i];
-            StartCoroutine(SendBurst(burst));
+            yield return mb.StartCoroutine(SendBurst(burst, p, distance));
             yield return new WaitForSeconds(burst.timeTilNextWave);
         }
     }
 
+    /// <summary>
+    /// Currently unused
+    /// </summary>
+    /// <param name="burst"></param>
+    /// <returns></returns>
     private IEnumerator SendBurst(Burst burst)
+    {
+        yield return StartCoroutine(SendBurst(burst, this.path, 0.001f));
+    }
+
+    public static IEnumerator SendBurst(Burst burst, Path p, float distance)
     {
         int length = burst.bloonPrefabSequence.Length;
         for (int i = 0; i < length; i++)
         {
             for (int j = 0; j < burst.count[i]; j++)
             {
-                Transform bloon = Instantiate(burst.bloonPrefabSequence[i], Vector3.zero, Quaternion.identity, this.transform);
-                bloon.gameObject.GetComponent<Bloon>().SetPath(path);
+                Transform bloon = Instantiate(burst.bloonPrefabSequence[i], Vector3.up * 100, Quaternion.identity, null);
+                Bloon b = bloon.gameObject.GetComponent<Bloon>();
+                b.SetPath(p);
+                b.Distance = distance;
+
                 // Instantiate(burst.bloonPrefabSequence[i]);
                 yield return new WaitForSeconds(burst.spacing[i]);
             }

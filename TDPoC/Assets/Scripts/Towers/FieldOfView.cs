@@ -140,7 +140,7 @@ public class FieldOfView : MonoBehaviour
             possibleTargets.Add(b);
             if (First == null || b.Distance > First.Distance)
             {
-                Debug.Log($"Reassigned first to {b}");
+                //Debug.Log($"Reassigned first to {b}");
                 First = b;
             }
             if (Last == null || b.Distance < Last.Distance)

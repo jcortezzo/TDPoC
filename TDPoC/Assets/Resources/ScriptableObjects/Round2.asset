@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f4ead649a56a440a9f2915cc6f37dc, type: 3}
-  m_Name: DDT
+  m_Script: {fileID: 11500000, guid: 5d74a2759bfa1f546810f59c53e0cd93, type: 3}
+  m_Name: Round2
   m_EditorClassIdentifier: 
-  bloonName: DDT
-  health: 0
-  speed: 0
-  properties: 000000000200000001000000
+  wave:
+  - {fileID: 11400000, guid: 73767915051f82f47af97f42c0feaa63, type: 2}

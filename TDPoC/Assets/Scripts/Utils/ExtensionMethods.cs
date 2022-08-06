@@ -13,7 +13,7 @@ public static class ExtensionMethods
                3 * Mathf.Pow(1 - t, 2) * Mathf.Pow(t, 2) * p2 +
                Mathf.Pow(t, 3) * p3;
     }
-
+    
     public static Vector2 BezierN(this float t, Vector2[] points)
     {
         int n = points.Length - 1;

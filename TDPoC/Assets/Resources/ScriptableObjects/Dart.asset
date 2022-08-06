@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f4ead649a56a440a9f2915cc6f37dc, type: 3}
-  m_Name: DDT
+  m_Script: {fileID: 11500000, guid: d5a88fe3169675942af671011957d9b4, type: 3}
+  m_Name: Dart
   m_EditorClassIdentifier: 
-  bloonName: DDT
-  health: 0
-  speed: 0
-  properties: 000000000200000001000000
+  projectileName: Dart
+  pierce: 2
+  damage: 1
+  canHit: 0200000003000000040000000500000006000000070000000800000009000000

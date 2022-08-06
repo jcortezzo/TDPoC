@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 697367671178377495}
   - component: {fileID: 1661988225368365345}
   m_Layer: 0
-  m_Name: Bloon
+  m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829015a1d8d58a4c8fcbc19d3ad7e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f1d930cfceaae8e4799bdfea4965563b, type: 2}
   path: {fileID: 0}
   speed: 7
   <Distance>k__BackingField: 0
+  <Health>k__BackingField: 1
 --- !u!58 &697367671178377495
 CircleCollider2D:
   m_ObjectHideFlags: 0
