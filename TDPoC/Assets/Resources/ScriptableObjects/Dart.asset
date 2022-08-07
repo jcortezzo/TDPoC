@@ -15,4 +15,6 @@ MonoBehaviour:
   projectileName: Dart
   pierce: 2
   damage: 1
+  lifeSpan: 2
+  speed: 35
   canHit: 0200000003000000040000000500000006000000070000000800000009000000

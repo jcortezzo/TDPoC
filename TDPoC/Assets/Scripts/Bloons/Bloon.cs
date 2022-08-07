@@ -35,7 +35,6 @@ public class Bloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("made bloon!");
         coroutineAllowed = true;
         Properties = new HashSet<BloonProperties>(data.properties);
         Health = data.health;
@@ -54,7 +53,7 @@ public class Bloon : MonoBehaviour
     {
         if (!IsAlive())
         {
-            Destroy(this.gameObject);
+            Pop();
         }
     }
 
@@ -74,16 +73,14 @@ public class Bloon : MonoBehaviour
         return Health > 0;
     }
 
-    public void OnDestroy()
+    public void Pop()
     {
-        //new List<Burst>(data.toSpawn).ForEach(Debug.Log);
         BloonCoroutineManager.Instance.StartCoroutine(BloonSpawner.SendWave(BloonCoroutineManager.Instance, data.toSpawn, this.path, this.Distance));
-        //StartCoroutine(BloonSpawner.SendWave(this, data.toSpawn, this.path, this.Distance));
+        Destroy(this.gameObject);
     }
 
     private IEnumerator FollowPath()
     {
-        Debug.Log("starting on path");
         coroutineAllowed = false;
 
         float modifier = 1f;

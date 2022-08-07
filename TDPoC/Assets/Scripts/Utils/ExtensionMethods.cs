@@ -59,4 +59,11 @@ public static class ExtensionMethods
             return n * Factorial(n - 1);
         }
     }
+
+    public static Vector2 GetDirectionTowards(this MonoBehaviour mb, MonoBehaviour other)
+    {
+        Vector2 targetPos = other.transform.position;
+        Vector2 currentPos = mb.transform.position;
+        return (targetPos - currentPos).normalized;
+    }
 }

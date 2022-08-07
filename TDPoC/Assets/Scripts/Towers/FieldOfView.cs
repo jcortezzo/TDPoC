@@ -40,7 +40,7 @@ public class FieldOfView : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        ViewDistance = GetComponentInParent<ExampleTower>().ViewDistance;
+        ViewDistance = GetComponentInParent<Tower>().ViewDistance;
         cc.radius = ViewDistance;
 
         possibleTargets = new HashSet<Bloon>();

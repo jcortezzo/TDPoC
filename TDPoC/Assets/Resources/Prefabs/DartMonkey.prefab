@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9140411223947409757}
   - component: {fileID: 9140411223947409756}
-  - component: {fileID: 9140411223947409758}
+  - component: {fileID: 6893532786349671009}
   m_Layer: 0
-  m_Name: ExampleTower
+  m_Name: DartMonkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0.00002193451, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6370455, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9140411223947409758
+--- !u!114 &6893532786349671009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9140411223947409754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec56ae0cda69a0548948c9f254cc5d99, type: 3}
+  m_Script: {fileID: 11500000, guid: 1421c9e469c0f7046b7e2d99015d6e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <ViewDistance>k__BackingField: 3
@@ -103,6 +103,7 @@ MonoBehaviour:
   <CooldownDuration>k__BackingField: 2
   <DamageModifier>k__BackingField: 1
   <PierceModifier>k__BackingField: 1
+  dartPrefab: {fileID: 974048162323117085, guid: 4c00552b302233c418c1fa4cffb07917, type: 3}
 --- !u!1 &9140411224853783247
 GameObject:
   m_ObjectHideFlags: 0
