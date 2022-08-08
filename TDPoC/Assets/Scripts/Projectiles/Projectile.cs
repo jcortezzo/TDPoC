@@ -46,8 +46,10 @@ public abstract class Projectile : MonoBehaviour
         if (b != null)
         {
             // hit bloon
+            //Debug.Break();
             if (CanHit(b))
             {
+                b.SetImmunity(this);
                 bool isDead = b.Damage(Mathf.FloorToInt(Damage));
             }
         }
@@ -60,6 +62,6 @@ public abstract class Projectile : MonoBehaviour
 
     public static bool CanHit(Projectile p, Bloon b)
     {
-        return b.Properties.IsSubsetOf(p.PropertiesCanHit);
+        return !b.IsImmuneTo(p) && b.Properties.IsSubsetOf(p.PropertiesCanHit);
     }
 }

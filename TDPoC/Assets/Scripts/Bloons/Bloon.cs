@@ -22,12 +22,16 @@ public class Bloon : MonoBehaviour
     [field: SerializeField]
     public int Health { get; private set; }
 
+    [field: SerializeField]
+    private HashSet<Projectile> immunitySet;
+
     // TODO: Add Health
 
     private bool coroutineAllowed = true;
 
     void Awake()
     {
+        immunitySet = new HashSet<Projectile>();
         Health = 1;
         Distance = 0.001f;
     }
@@ -57,6 +61,24 @@ public class Bloon : MonoBehaviour
         }
     }
 
+    public bool IsImmuneTo(Projectile p)
+    {
+        if (immunitySet == null)
+        {
+            immunitySet = new HashSet<Projectile>();
+        }
+        return p == null || immunitySet.Contains(p);
+    }
+
+    public void SetImmunity(Projectile p)
+    {
+        if (immunitySet == null)
+        {
+            immunitySet = new HashSet<Projectile>();
+        }
+        immunitySet.Add(p);
+    }
+
     public void SetPath(Path p)
     {
         this.path = p;
@@ -75,7 +97,7 @@ public class Bloon : MonoBehaviour
 
     public void Pop()
     {
-        BloonCoroutineManager.Instance.StartCoroutine(BloonSpawner.SendWave(BloonCoroutineManager.Instance, data.toSpawn, this.path, this.Distance));
+        BloonCoroutineManager.Instance.StartCoroutine(BloonSpawner.SendWave(BloonCoroutineManager.Instance, data.toSpawn, this.path, this.Distance, immunitySet));
         Destroy(this.gameObject);
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BloonSpawner : MonoBehaviour
 {
@@ -45,7 +46,7 @@ public class BloonSpawner : MonoBehaviour
         yield return StartCoroutine(SendWave(this, wave, this.path, 0.001f));
     }
 
-    public static IEnumerator SendWave(MonoBehaviour mb, Burst[] wave, Path p, float distance)
+    public static IEnumerator SendWave(MonoBehaviour mb, Burst[] wave, Path p, float distance, HashSet<Projectile> immunitySet=null)
     {
         if (wave == null)
         {
@@ -54,7 +55,7 @@ public class BloonSpawner : MonoBehaviour
         for (int i = 0; i < wave.Length; i++)
         {
             Burst burst = wave[i];
-            yield return mb.StartCoroutine(SendBurst(burst, p, distance));
+            yield return mb.StartCoroutine(SendBurst(burst, p, distance, immunitySet));
             yield return new WaitForSeconds(burst.timeTilNextWave);
         }
     }
@@ -69,7 +70,7 @@ public class BloonSpawner : MonoBehaviour
         yield return StartCoroutine(SendBurst(burst, this.path, 0.001f));
     }
 
-    public static IEnumerator SendBurst(Burst burst, Path p, float distance)
+    public static IEnumerator SendBurst(Burst burst, Path p, float distance, HashSet<Projectile> immunitySet= null)
     {
         int length = burst.bloonPrefabSequence.Length;
         for (int i = 0; i < length; i++)
@@ -80,6 +81,8 @@ public class BloonSpawner : MonoBehaviour
                 Bloon b = bloon.gameObject.GetComponent<Bloon>();
                 b.SetPath(p);
                 b.Distance = distance;
+                Debug.Log($"{immunitySet?.Count}");
+                immunitySet?.ToList().ForEach(projectile => b.SetImmunity(projectile));
 
                 // Instantiate(burst.bloonPrefabSequence[i]);
                 yield return new WaitForSeconds(burst.spacing[i]);

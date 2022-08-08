@@ -186,6 +186,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7336606750508089211, guid: f1a0e18ce2c60ed488d0b1905bd91afe, type: 3}
   m_PrefabInstance: {fileID: 1901019099}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &138663729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9140411223947409754, guid: e868911a063c1cb47a2cca48e5e7f581, type: 3}
+  m_PrefabInstance: {fileID: 712883882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &138663733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138663729}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec56ae0cda69a0548948c9f254cc5d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ViewDistance>k__BackingField: 3
+  <Targeting>k__BackingField: 0
+  <CooldownDuration>k__BackingField: 2
+  <DamageModifier>k__BackingField: 1
+  <PierceModifier>k__BackingField: 1
 --- !u!114 &221450890 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4556465752048983228, guid: 5cf8ad1fcaaba7b4a8625de76a6f79ff, type: 3}
@@ -299,6 +321,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6893532786349671009, guid: e868911a063c1cb47a2cca48e5e7f581, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9140411223947409754, guid: e868911a063c1cb47a2cca48e5e7f581, type: 3}
       propertyPath: m_Name
       value: DartMonkey

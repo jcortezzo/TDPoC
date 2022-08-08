@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 6274605210356305294, guid: 3129dd647b6574942a893a2413aa0ccd, type: 3}
   count: 03000000
   spacing:
-  - 0.05
+  - 0.1
   timeTilNextWave: 0
