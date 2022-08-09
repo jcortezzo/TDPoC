@@ -329,6 +329,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DartMonkey
       objectReference: {fileID: 0}
+    - target: {fileID: 9140411223947409754, guid: e868911a063c1cb47a2cca48e5e7f581, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9140411223947409757, guid: e868911a063c1cb47a2cca48e5e7f581, type: 3}
       propertyPath: m_RootOrder
       value: 1

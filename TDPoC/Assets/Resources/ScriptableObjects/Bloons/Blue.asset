@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloonName: Blue
   health: 1
-  speed: 4
+  speed: 6
   properties: 
   toSpawn:
   - {fileID: 11400000, guid: 4270974978474fb40b3712f08326d7b3, type: 2}

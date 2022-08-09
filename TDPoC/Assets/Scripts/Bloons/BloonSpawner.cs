@@ -60,6 +60,42 @@ public class BloonSpawner : MonoBehaviour
         }
     }
 
+    public static void SendWaveByDistance(Burst[] wave, Path p, float startingDistance, HashSet<Projectile> immunitySet = null)
+    {
+        if (wave == null)
+        {
+            return;
+        }
+        for (int i = 0; i < wave.Length; i++)
+        {
+            Burst burst = wave[i];
+            //startingDistance = Mathf.Max(0f, startingDistance - p.GetNextDistance(startingDistance, speed, ticRate))
+            SendBurstByDistance(burst, p, startingDistance, immunitySet);
+            // TODO: Change the next starting distance
+        }
+        return;
+    }
+
+    public static void SendBurstByDistance(Burst burst, Path p, float startingDistance, HashSet<Projectile> immunitySet = null)
+    {
+        int length = burst.bloonPrefabSequence.Length;
+        for (int i = 0; i < length; i++)
+        {
+            float spacing = burst.spacing[i];
+            var bloonPrefab = burst.bloonPrefabSequence[i].gameObject;
+            float speed = burst.bloonPrefabSequence[i].GetComponent<Bloon>().Speed;
+            float prevT = startingDistance;
+            float ticRate = 0.001f;
+            Debug.Log(startingDistance);
+            for (int j = 0; j < burst.count[i]; j++)
+            {
+                float t = Mathf.Max(0.0001f, p.GetNextDistance(prevT, speed, ticRate, -spacing));
+                Bloon b = InstantiateBloon(bloonPrefab, p, t, immunitySet);
+                prevT = t;
+            }
+        }
+    }
+
     /// <summary>
     /// Currently unused
     /// </summary>
@@ -88,5 +124,15 @@ public class BloonSpawner : MonoBehaviour
                 yield return new WaitForSeconds(burst.spacing[i]);
             }
         }
+    }
+
+    public static Bloon InstantiateBloon(GameObject bloonPrefab, Path p, float distance, HashSet<Projectile> immunitySet=null)
+    {
+        GameObject bloon = Instantiate(bloonPrefab, Vector3.up * 100, Quaternion.identity, null);
+        Bloon b = bloon.gameObject.GetComponent<Bloon>();
+        b.SetPath(p);
+        b.Distance = distance;
+        immunitySet?.ToList().ForEach(projectile => b.SetImmunity(projectile));
+        return b;
     }
 }

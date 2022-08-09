@@ -66,4 +66,11 @@ public static class ExtensionMethods
         Vector2 currentPos = mb.transform.position;
         return (targetPos - currentPos).normalized;
     }
+
+    public static float GetNextDistance(this Path path, float prevDistance, float speed, float ticRate, float time) {
+        // t1 = (deltaTime * ticRate * speed) / dist(B(t0), B(t0 + ticRate))
+        float t = time * ticRate * speed;
+        t /= Vector2.Distance(path.GetPosition(prevDistance), path.GetPosition(prevDistance + ticRate));
+        return t + prevDistance;
+    }
 }

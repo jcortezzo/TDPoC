@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloonPrefabSequence:
   - {fileID: 6274605210356305294, guid: 62123c778ed511840aade4c77505cd37, type: 3}
-  count: 02000000
+  count: 04000000
   spacing:
-  - 0.5
+  - 0.3
   timeTilNextWave: 0

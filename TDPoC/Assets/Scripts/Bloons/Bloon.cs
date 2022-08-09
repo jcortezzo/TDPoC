@@ -97,7 +97,8 @@ public class Bloon : MonoBehaviour
 
     public void Pop()
     {
-        BloonCoroutineManager.Instance.StartCoroutine(BloonSpawner.SendWave(BloonCoroutineManager.Instance, data.toSpawn, this.path, this.Distance, immunitySet));
+        //BloonCoroutineManager.Instance.StartCoroutine(BloonSpawner.SendWave(BloonCoroutineManager.Instance, data.toSpawn, this.path, this.Distance, immunitySet));
+        BloonSpawner.SendWaveByDistance(data.toSpawn, this.path, this.Distance, immunitySet);
         Destroy(this.gameObject);
     }
 
@@ -105,18 +106,13 @@ public class Bloon : MonoBehaviour
     {
         coroutineAllowed = false;
 
-        float modifier = 1f;
-        float ticRate = 0.01f;
+        float ticRate = 0.001f;
         // if we don't want to normalize speed, just put Time.deltaTime * speed as your for loop condition
-        for (; Distance <= 1; Distance += Time.deltaTime * ticRate * Speed * modifier)
+        for (; Distance <= 1; Distance = path.GetNextDistance(Distance, Speed, ticRate, Time.deltaTime))
         {
             transform.position = path.GetPosition(Distance);
             transform.up = path.GetRotation(Distance);
 
-            // normalize over points to get constant speed
-            var nextPos = path.GetPosition(Mathf.Min(0.999f, Distance + ticRate));
-            var dist = Vector2.Distance(transform.position, nextPos);
-            modifier = 1f / dist;
             yield return new WaitForEndOfFrame();
         }
 
