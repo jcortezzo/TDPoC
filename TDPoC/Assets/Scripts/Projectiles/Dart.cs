@@ -17,6 +17,7 @@ public class Dart : Projectile
     {
         rb.velocity = Direction.normalized * Speed;
         Debug.Log($"Dart go! @ speed={Speed} direction={rb.velocity.normalized}");
+        transform.up = Direction;
         yield return null;
     }
 }

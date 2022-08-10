@@ -53,6 +53,9 @@ public abstract class Tower : MonoBehaviour
     public void Face(MonoBehaviour target)
     {
         transform.up = this.GetDirectionTowards(target);
+        //var dir = this.GetDirectionTowards(target);
+        //transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, dir));
+        //Debug.Log(transform.up);
     }
 
     public Projectile InstantiateProjectile(GameObject prefab)
