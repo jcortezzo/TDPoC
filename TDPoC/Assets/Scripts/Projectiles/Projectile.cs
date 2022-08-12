@@ -21,12 +21,15 @@ public abstract class Projectile : MonoBehaviour
 
     public HashSet<BloonProperties> PropertiesCanHit;
 
-    protected Rigidbody2D rb; 
+    protected Rigidbody2D rb;
+
+    private int pierceRemaining;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         PropertiesCanHit = new HashSet<BloonProperties>(data.canHit);
+        pierceRemaining = Mathf.FloorToInt(Pierce);
         rb = GetComponent<Rigidbody2D>();
         Destroy(this.gameObject, LifeSpan);
         StartCoroutine(Travel());
@@ -38,6 +41,14 @@ public abstract class Projectile : MonoBehaviour
         
     }
 
+    void LateUpdate()
+    {
+        if (pierceRemaining <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     public abstract IEnumerator Travel();
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -47,10 +58,12 @@ public abstract class Projectile : MonoBehaviour
         {
             // hit bloon
             //Debug.Break();
-            if (CanHit(b))
+            // TODO: loop over collision points -- have to turn it to OnCollision?
+            if (CanHit(b) && pierceRemaining > 0)
             {
                 b.SetImmunity(this);
                 bool isDead = b.Damage(Mathf.FloorToInt(Damage));
+                pierceRemaining--;
             }
         }
     }

@@ -25,24 +25,11 @@ public class Route4 : MonoBehaviour
     [SerializeField]
     private float sphereSize = 0.25f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnDrawGizmos()
     {
         for (float t = 0; t <= 1; t += 1f / numVisibleSegments)
         {
-            //Vector2[] controlPointPositions = ControlPoints.Select(p => new Vector2(p.position.x, p.position.y)).ToArray(); ;//ControlPointPositions;
-            Vector2 gizmosPosition = t.BezierN(ControlPointPositions);//t.Bezier4(controlPointPositions[0], controlPointPositions[1], controlPointPositions[2], controlPointPositions[3]);//t.BezierN(controlPointPositions);
+            Vector2 gizmosPosition = BloonsMath.BezierN(t, ControlPointPositions);
 
             Gizmos.DrawSphere(gizmosPosition, sphereSize);
         }

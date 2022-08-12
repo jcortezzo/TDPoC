@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public static class ExtensionMethods
+public static class BloonsMath
 {
-    public static Vector2 Bezier4(this float t, Vector2 p0, Vector2 p1,
-                                                Vector2 p2, Vector2 p3)
-    {
-        return Mathf.Pow(1 - t, 3) * p0 +
-               3 * Mathf.Pow(1 - t, 2) * t * p1 +
-               3 * Mathf.Pow(1 - t, 2) * Mathf.Pow(t, 2) * p2 +
-               Mathf.Pow(t, 3) * p3;
-    }
-    
-    public static Vector2 BezierN(this float t, Vector2[] points)
+    private const float MIN_PATH_DISTANCE = 0.0001f;
+    private const float MAX_PATH_DISTANCE = 1 - MIN_PATH_DISTANCE;
+
+    public static Vector2 BezierN(float t, Vector2[] points)
     {
         int n = points.Length - 1;
         Vector2 result = Vector2.zero;
@@ -28,7 +22,7 @@ public static class ExtensionMethods
         return result;
     }
 
-    public static Vector2 DerivativeBezierN(this float t, Vector2[] points)
+    public static Vector2 DerivativeBezierN(float t, Vector2[] points)
     {
         int n = points.Length - 1;
         Vector2 result = Vector2.zero;
@@ -72,5 +66,10 @@ public static class ExtensionMethods
         float t = time * ticRate * speed;
         t /= Vector2.Distance(path.GetPosition(prevDistance), path.GetPosition(prevDistance + ticRate));
         return t + prevDistance;
+    }
+
+    public static float BoundDistance(this float t)
+    {
+        return Mathf.Max(MIN_PATH_DISTANCE, Mathf.Min(MAX_PATH_DISTANCE, t));
     }
 }

@@ -89,7 +89,7 @@ public class BloonSpawner : MonoBehaviour
             Debug.Log(startingDistance);
             for (int j = 0; j < burst.count[i]; j++)
             {
-                float t = Mathf.Max(0.0001f, p.GetNextDistance(prevT, speed, ticRate, -spacing));
+                float t = p.GetNextDistance(prevT, speed, ticRate, -spacing);
                 Bloon b = InstantiateBloon(bloonPrefab, p, t, immunitySet);
                 prevT = t;
             }
@@ -117,10 +117,8 @@ public class BloonSpawner : MonoBehaviour
                 Bloon b = bloon.gameObject.GetComponent<Bloon>();
                 b.SetPath(p);
                 b.Distance = distance;
-                Debug.Log($"{immunitySet?.Count}");
                 immunitySet?.ToList().ForEach(projectile => b.SetImmunity(projectile));
 
-                // Instantiate(burst.bloonPrefabSequence[i]);
                 yield return new WaitForSeconds(burst.spacing[i]);
             }
         }
